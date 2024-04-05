@@ -72,7 +72,7 @@ DE_BYPASS = (
 DE_BYPASS.append("mdisk.me")
 
 FORWARD_MESSAGE = is_enabled(
-    (os.environ.get("FORWARD_MESSAGE", "False")), False
+    (os.environ.get("FORWARD_MESSAGE", "False")), True
 )  # true if forwardd message to converted by reposting the post
 
 
