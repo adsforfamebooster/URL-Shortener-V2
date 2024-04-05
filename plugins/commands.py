@@ -31,15 +31,7 @@ user_commands = [
     "me",
 ]
 avl_web = [
-    "droplink.co",
-    "gplinks.in",
-    "tnlink.in",
-    "za.gl",
-    "du-link.in",
-    "viplink.in",
-    "shorturllink.in",
-    "shareus.in",
-    "earnspace.in",
+    "inshorturl.com",
 ]
 
 avl_web1 = "".join(f"- {i}\n" for i in avl_web)
@@ -168,7 +160,6 @@ async def stats_handler(c: Client, m: Message):
 **- Total Users:** `{total_users}`
 **- Total Posts Sent:** `{link_stats['posts']}`
 **- Total Links Shortened:** `{link_stats['links']}`
-**- Total Mdisk Links Shortened:** `{link_stats['mdisk_links']}`
 **- Total Shortener Links Shortened:** `{link_stats['shortener_links']}`
 **- Used Storage:** `{size}`
 **- Total Free Storage:** `{free}`
