@@ -62,12 +62,6 @@ async def main_convertor_handler(
     if len(await extract_link(caption)) <= 0 and not message.reply_markup:
         return
 
-    user_method = user["method"]
-
-    # Checking if the user has set his method or not. If not, it will reply with a message.
-    if user_method is None:
-        return await message.reply(text="Set your /method first")
-
     # Bypass Links
     caption = await bypass_handler(caption)
 
@@ -269,9 +263,6 @@ async def update_stats(m: Message, method):
         message = m.caption.html
     else:
         message = m.text.html
-
-    mdisk_links = re.findall(
-        r'https?://mdisk.me[^\s`!()\[\]{};:".,<>?«»“”‘’]+', message
     )
     droplink_links = await extract_link(message)
     total_links = len(droplink_links)
