@@ -28,17 +28,18 @@ HELP_MESSAGE = """Hey there! My name is {firstname} and I'm a link convertor and
 
 I have a ton of handy features to help you out, such as:
 
-- [Hyperlink](https://t.me/{username}) support 🔗
-- Button conversion support 🔘
-- Domain inclusion and exclusion options 🌐
-- Header and footer text support 📝
-- Replace username function 📎
-- Banner image support 🖼️
+- Setup Header - /header 🔗
+- Setup Footer - /footer 🔘
+- Setup Username - /username 🌐
+- Setup Banner Img - /banner_image 📝
+- Setup Include Domains - /include_domain  📎
+- Setup Exclude Domains - /exclude_domain 🖼️
 
 Useful commands:
 
-- /start: Start me up! You probably already used this.
-- /help: Send this message; I'll tell you more about myself!
+- /start Go Back to Home.
+- /shortener_api - Setup or Change API 
+- /me - Your profile Settings 
 """
 
 ABOUT_TEXT = """
@@ -123,11 +124,9 @@ BACK_REPLY_MARKUP = InlineKeyboardMarkup(
 USER_ABOUT_MESSAGE = """
 🔧 Here are the current settings for this bot:
 
-- 🌐 Shortener website: {base_site}
+- 🌐 Shortener website: inShortUrl.com
 
-- 🧰 Method: {method}
-
-- 🔌 {base_site} API: {shortener_api}
+- 🔌 inShortUrl API: {shortener_api}
 
 - 📎 Username: @{username}
 
