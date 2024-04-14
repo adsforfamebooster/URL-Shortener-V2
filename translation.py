@@ -11,13 +11,17 @@ For example: <code>/batch -100xxx</code>
 I'll handle the rest and get those links shortened or converted in a short time! 💪
 """
 
-START_MESSAGE = """Hi there {} 
+START_MESSAGE = """Hi there {} 👋😃
 
-Send me a link or post and I'll shorten it for you!
+Welcome to @inShortUrlBot - Your Personal URL Shortener Bot. 🌐
 
-To learn more about what I can do, just type /help.
+Just send me a link, and I'll work my magic to shorten it for you. Plus, I'll keep track of your earnings! 💰💼
 
-Shortener website: {}
+/shortener_api - Connect API
+/me - Youre profile setting
+/help - Advanced setting
+
+New User ? Then just sign up on inShortUrl.com and Get Highest Upto 9$ CPM rate & 10% Refer Earning Lifetime.
 """
 
 HELP_MESSAGE = """Hey there! My name is {firstname} and I'm a link convertor and shortener bot here to make your work easier and help you earn more 💰.
