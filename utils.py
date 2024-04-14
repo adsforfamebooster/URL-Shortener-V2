@@ -71,13 +71,6 @@ async def main_convertor_handler(
     # Bypass Links
     caption = await bypass_handler(caption)
 
-    # A dictionary which contains the methods to be called.
-    METHODS = {
-        "mdisk": mdisk_api_handler,
-        "shortener": replace_link,
-        "mdlink": mdisk_droplink_convertor,
-    }
-
     # Replacing the username with your username.
     caption = await replace_username(caption, username)
 
@@ -178,13 +171,6 @@ async def create_inline_keyboard_markup(message: Message, method_func, user):
             buttons.append(row_buttons)
         return InlineKeyboardMarkup(buttons)
 
-
-async def mdisk_api_handler(user, text, alias=""):
-    api_key = user["mdisk_api"]
-    mdisk = Mdisk(api_key)
-    return await mdisk.convert_from_text(text)
-
-
 async def replace_link(user, text, alias=""):
     api_key = user["shortener_api"]
     base_site = user["base_site"]
@@ -215,12 +201,6 @@ async def replace_link(user, text, alias=""):
             text = text.replace(long_url, short_link)
 
     return text
-
-
-async def mdisk_droplink_convertor(user, text, alias=""):
-    links = await mdisk_api_handler(user, text)
-    links = await replace_link(user, links, alias=alias)
-    return links
 
 
 async def replace_username(text, username):
@@ -254,11 +234,6 @@ async def bypass_func(url):
     except Exception:
         c_link = url
     return c_link
-
-
-async def is_droplink_url(url):
-    domain = urlparse(url).netloc
-    return url if "droplink.co" in domain else False
 
 
 async def broadcast_admins(c: Client, Message, sender=False):
@@ -349,20 +324,9 @@ async def get_me_button(user):
 
 async def user_api_check(user):
     user_method = user["method"]
-    if user_method == "mdisk":
-        if not user["mdisk_api"]:
-            return "\n\nSet your /mdisk_api to continue..."
-    elif user_method == "shortener":
+    if user_method == "shortener":
         if not user["shortener_api"]:
             return f"\n\nSet your /shortener_api to continue...\nCurrent Website {user['base_site']}"
-    elif user_method == "mdlink":
-        if not user["mdisk_api"]:
-            return "\n\nSet your /mdisk_api to continue..."
-        if not user["shortener_api"]:
-            return f"\n\nSet your /shortener_api to continue...\nCurrent Website {user['base_site']}"
-    else:
-        return "\n\nSet your /method first"
-    return True
 
 
 def extract_domain(link):
@@ -382,9 +346,7 @@ async def set_commands(app):
         BotCommand("start", "Used to start the bot."),
         BotCommand("help", "Displays the help command."),
         BotCommand("about", "Displays information about the bot."),
-        BotCommand("method", "Sets your preferred method."),
         BotCommand("shortener_api", "Sets the shortener API."),
-        BotCommand("mdisk_api", "Sets the mDisk API."),
         BotCommand("header", "Sets the header."),
         BotCommand("footer", "Sets the footer."),
         BotCommand("username", "Sets the username to replace others."),
