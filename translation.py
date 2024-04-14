@@ -30,14 +30,11 @@ I have a ton of handy features to help you out, such as:
 - Header and footer text support 📝
 - Replace username function 📎
 - Banner image support 🖼️
-- Batch conversion for channel admins only 📊
-- Channel support for admins only 📢
 
 Useful commands:
 
 - /start: Start me up! You probably already used this.
 - /help: Send this message; I'll tell you more about myself!
-- /batch -100xxx: To shorten or convert all posts in your channel
 """
 
 ABOUT_TEXT = """
@@ -46,26 +43,10 @@ ABOUT_TEXT = """
 `🤖 Name:` ** {} **
     
 `📝 Language:` [Python 3](https://www.python.org/)
-`🧰 Framework:` [Pyrogram](https://github.com/pyrogram/pyrogram)
-`👨‍💻 Developer:` [Dev](t.me/ask_admin001)
-`📢 Support:` [Talk Bot](https://t.me/ask_admin001)
-`🌐 Source Code:` [GitHub](https://github.com/kevinnadar22/URL-Shortener-V2/)
+`👨‍💻 Developer:` [Dev](t.me/inShortUrl)
+`📢 Support:` [Support Talk](https://t.me/inShortUrl_Help)
 """
 
-
-METHOD_MESSAGE = """
-Current Method: {method}
-    
-Methods Available:
-
-> `mdlink` - Change all the links of the post to your MDisk account first and then short to {shortener} link.
-
-> `shortener` - Short all the links of the post to {shortener} link directly.
-
-> `mdisk` - Save all the links of the post to your Mdisk account.
-    
-To change method, choose it from the following options:
-"""
 
 CUSTOM_ALIAS_MESSAGE = """For custom alias, `[link] | [custom_alias]`, Send in this format
 
@@ -90,15 +71,7 @@ Here is a list of the channels:
 HELP_REPLY_MARKUP = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Methods", callback_data="method_command"),
-            InlineKeyboardButton("Batch", callback_data="cbatch_command"),
-        ],
-        [
             InlineKeyboardButton("Custom Alias", callback_data="alias_conf"),
-            InlineKeyboardButton("Admins", callback_data="admins_list"),
-        ],
-        [
-            InlineKeyboardButton("Channels", callback_data="channels_list"),
             InlineKeyboardButton("Home", callback_data="start_command"),
         ],
     ]
@@ -122,7 +95,6 @@ START_MESSAGE_REPLY_MARKUP = InlineKeyboardMarkup(
             InlineKeyboardButton("About", callback_data="about_command"),
         ],
         [
-            InlineKeyboardButton("Method", callback_data="method_command"),
             InlineKeyboardButton("Close", callback_data="delete"),
         ],
     ]
@@ -130,15 +102,9 @@ START_MESSAGE_REPLY_MARKUP = InlineKeyboardMarkup(
 
 METHOD_REPLY_MARKUP = InlineKeyboardMarkup(
     [
-        [
-            InlineKeyboardButton(
-                "MDLINK", callback_data="change_method#mdlink"
-            ),
             InlineKeyboardButton(
                 "Shortener", callback_data="change_method#shortener"
             ),
-            InlineKeyboardButton("Mdisk", callback_data="change_method#mdisk"),
-        ],
         [
             InlineKeyboardButton("Back", callback_data="help_command"),
             InlineKeyboardButton("Close", callback_data="delete"),
@@ -159,8 +125,6 @@ USER_ABOUT_MESSAGE = """
 
 - 🔌 {base_site} API: {shortener_api}
 
-- 💾 Mdisk API: {mdisk_api}
-
 - 📎 Username: @{username}
 
 - 📝 Header text:
@@ -171,17 +135,6 @@ USER_ABOUT_MESSAGE = """
 
 🖼️ Banner image: {banner_image}
 """
-
-
-MDISK_API_MESSAGE = """To add or update your Mdisk API, \n`/mdisk_api mdisk_api`
-            
-Ex: `/mdisk_api 6LZq851sXoPHugiKQq`
-            
-Others Mdisk Links will be automatically changed to the API of this Mdisk account
-
-Get your Mdisk API from @VideoToolMoneyTreebot
-
-Current Mdisk API: `{}`"""
 
 SHORTENER_API_MESSAGE = """To add or update your Shortner Website API, 
 `/shortener_api [api]`
