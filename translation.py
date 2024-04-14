@@ -13,12 +13,12 @@ I'll handle the rest and get those links shortened or converted in a short time!
 
 START_MESSAGE = """Hi there {} 👋😃
 
-Welcome to @inShortUrlBot - Your Personal URL Shortener Bot. 🌐
+Welcome to [InShortUrl Bot](t.me/inShortUrlBot) - Your Personal URL Shortener Bot. 🌐
 
 Just send me a link, and I'll work my magic to shorten it for you. Plus, I'll keep track of your earnings! 💰💼
 
 /shortener_api - Connect API
-/me - Youre profile setting
+/me - Your profile setting
 /help - Advanced setting
 
 New User ? Then just sign up on inShortUrl.com and Get Highest Upto 9$ CPM rate & 10% Refer Earning Lifetime.
@@ -28,25 +28,26 @@ HELP_MESSAGE = """Hey there! My name is {firstname} and I'm a link convertor and
 
 I have a ton of handy features to help you out, such as:
 
-- Setup Header - /header 🔗
-- Setup Footer - /footer 🔘
-- Setup Username - /username 🌐
-- Setup Banner Img - /banner_image 📝
-- Setup Include Domains - /include_domain  📎
-- Setup Exclude Domains - /exclude_domain 🖼️
+•  Setup Header - /header 
+•  Setup Footer - /footer 
+•  Setup Username - /username 
+•  Setup Banner Img - /banner_image 
+•  Setup Include Domains - /include_domain  
+•  Setup Exclude Domains - /exclude_domain 
 
 Useful commands:
 
-- /start Go Back to Home.
-- /shortener_api - Setup or Change API 
-- /me - Your profile Settings 
+•  /start Go Back to Home.
+•  /shortener_api - Setup or Change API 
+•  /me - Your profile Settings 
+
+Contact Help Support - @inShortUrl_Help
 """
 
 ABOUT_TEXT = """
-**My Details:**
+**Bot Details:**
 
-`🤖 Name:` ** {} **
-    
+`🤖 Name:` ** {} ** 
 `📝 Language:` [Python 3](https://www.python.org/)
 `👨‍💻 Developer:` [Dev](t.me/inShortUrl)
 `📢 Support:` [Support Talk](https://t.me/inShortUrl_Help)
@@ -105,48 +106,34 @@ START_MESSAGE_REPLY_MARKUP = InlineKeyboardMarkup(
     ]
 )
 
-METHOD_REPLY_MARKUP = InlineKeyboardMarkup(
-    [
-            InlineKeyboardButton(
-                "Shortener", callback_data="change_method#shortener"
-            ),
-        [
-            InlineKeyboardButton("Back", callback_data="help_command"),
-            InlineKeyboardButton("Close", callback_data="delete"),
-        ],
-    ]
-)
-
 BACK_REPLY_MARKUP = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Back", callback_data="help_command")]]
 )
 
 USER_ABOUT_MESSAGE = """
-🔧 Here are the current settings for this bot:
+<b>Current Setting Of Your Bot is Here:</b>
 
-- 🌐 Shortener website: inShortUrl.com
-
-- 🔌 inShortUrl API: {shortener_api}
-
-- 📎 Username: @{username}
-
-- 📝 Header text:
+•  🌐 Shortener website: inShortUrl.com
+•  🔌 inShortUrl API: {shortener_api}
+•  📎 Username: @{username}
+•  📝 Header text:
 {header_text}
-
-- 📝 Footer text:
+•  📝 Footer text:
 {footer_text}
-
-🖼️ Banner image: {banner_image}
+•  🖼️ Banner image: {banner_image}
 """
 
-SHORTENER_API_MESSAGE = """To add or update your Shortner Website API, 
+SHORTENER_API_MESSAGE = """<b>How To Connect API ?</b>
+
+• First Visit inShortUrl.com/member/tools/api
+• Copy the API Token & Comeback to the Bot.
+• Put /shortener_api [api] Replace With Your API
+• Done! Now Bot is Succesfully Connected With Your inShortUrl Account
+
+To add or update your Shortner Website API, 
 `/shortener_api [api]`
             
 Ex: `/shortener_api 6LZq851sXofffPHugiKQq`
-
-Current Website: {base_site}
-
-To change your Shortener Website: /base_site
 
 Current Shortener API: `{shortener_api}`"""
 
