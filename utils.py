@@ -23,22 +23,10 @@ from plugins import web_server
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
+# Default user method
+user_method = "shortener"  # Set 'shortener' as the default method
 
-async def main_convertor_handler(
-    message: Message, edit_caption: bool = False, user=None
-):
-
-    """
-    This function is used to convert a message to a different format
-
-    :param message: The message object that the user sent
-    :type message: Message
-    :param type: str - The type of the media to be converted
-    :param edit_caption: If you want to edit the caption of the message, set this to True, defaults to
-    False
-    :type edit_caption: bool (optional)
-    :param user: The user who sent the message
-    """
+async def main_convertor_handler(message: Message, edit_caption: bool = False, user=None):
     if user:
         header_text = (
             user["header_text"].replace(
@@ -69,7 +57,7 @@ async def main_convertor_handler(
     caption = await replace_username(caption, username)
 
     # Getting the function for the user's method
-    method_func = METHODS[user_method]
+    method_func = METHODS.get(user_method)  # Using .get() to avoid KeyError
 
     # converting urls
     shortenedText = await method_func(user, caption)
