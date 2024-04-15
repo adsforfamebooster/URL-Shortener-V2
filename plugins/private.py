@@ -20,27 +20,28 @@ async def private_link_handler(c: Client, message: Message):
             return
 
         if message.text:
-                caption = message.text
+            caption = message.text
         elif message.caption:
-                caption = message.caption
+            caption = message.caption
 
-# Ensure that caption is not None before proceeding
+        # Ensure that caption is not None before proceeding
         if not caption:
             return
-        if message.text and message.text.startswith("/"):
-            return
 
-        if message.text:
-                caption = message.text.html
-        elif message.caption:
-                caption = message.caption.html
-            
+        # Validate the content of the message
+        vld = await user_api_check(user)
+        if vld and vld.strip():  # Check if vld is not empty and contains non-whitespace characters
+            # Send the message
+            await message.reply_text(vld.strip())
+            return  # Return to exit the function
+        else:
+            # If vld is empty or contains only whitespace characters, log an error or handle it accordingly
+            logger.error("Invalid or empty message: %s", vld)
+
+        # Continue with your code...
         if len(await extract_link(caption)) <= 0 and not message.reply_markup:
             return
         user_method = user["method"]
-        vld = await user_api_check(user)
-        if vld is not True:
-            return await message.reply_text(vld)
         try:
             txt = await message.reply(
                 "`Cooking... It will take some time if you have enabled Link Bypass`",
@@ -69,3 +70,4 @@ async def private_link_handler(c: Client, message: Message):
             await txt.delete()
     except Exception as e:
         logging.exception(e, exc_info=True)
+
