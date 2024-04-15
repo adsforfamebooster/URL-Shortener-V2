@@ -20,9 +20,13 @@ async def private_link_handler(c: Client, message: Message):
             return
 
         if message.text:
-            caption = message.text.html
+                caption = message.text
         elif message.caption:
-            caption = message.caption.html
+                caption = message.caption
+
+# Ensure that caption is not None before proceeding
+        if not caption:
+        return
             
         if len(await extract_link(caption)) <= 0 and not message.reply_markup:
             return
