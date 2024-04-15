@@ -260,10 +260,9 @@ async def get_size(size):
 
 async def update_stats(m: Message, method):
     if m.caption:
-        message = m.caption.html
+        message = m.caption  # Assuming m.caption is already HTML-formatted text
     else:
-        message = m.text.html
-    )
+        message = m.text  # Assuming m.text is the alternative if m.caption is None
     droplink_links = await extract_link(message)
     total_links = len(droplink_links)
     await db.update_posts(1)
