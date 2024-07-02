@@ -23,6 +23,11 @@ from plugins import web_server
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
+METHODS = {
+          "shortener": replace_link
+}
+
+
 # Default user method
 user_method = "shortener"  # Set 'shortener' as the default method
 
