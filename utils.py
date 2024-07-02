@@ -31,6 +31,40 @@ METHODS = {
 # Default user method
 user_method = "shortener"  # Set 'shortener' as the default method
 
+
+async def replace_link(user, text, alias=""):
+    api_key = user["shortener_api"]
+    base_site = user["base_site"]
+    shortzy = Shortzy(api_key, base_site)
+    links = await extract_link(text)
+
+    for link in links:
+        if not link.startswith("https:"):
+            link = link.replace("http:", "https:", 1)
+        long_url = link
+
+        should_replace_link = False
+        if user["include_domain"]:
+            include = user["include_domain"]
+            domains = [domain.strip() for domain in include]
+            if any(i in link for i in domains):
+                should_replace_link = True
+        elif user["exclude_domain"]:
+            exclude = user["exclude_domain"]
+            domains = [domain.strip() for domain in exclude]
+            if all(i not in link for i in domains):
+                should_replace_link = True
+        else:
+            should_replace_link = True
+
+        if should_replace_link:
+            short_link = await shortzy.convert(link, alias)
+            text = text.replace(long_url, short_link)
+
+    return text
+
+
+
 async def main_convertor_handler(message: Message, edit_caption: bool = False, user=None):
     if user:
         header_text = (
@@ -158,36 +192,6 @@ async def create_inline_keyboard_markup(message: Message, method_func, user):
             buttons.append(row_buttons)
         return InlineKeyboardMarkup(buttons)
 
-async def replace_link(user, text, alias=""):
-    api_key = user["shortener_api"]
-    base_site = user["base_site"]
-    shortzy = Shortzy(api_key, base_site)
-    links = await extract_link(text)
-
-    for link in links:
-        if not link.startswith("https:"):
-            link = link.replace("http:", "https:", 1)
-        long_url = link
-
-        should_replace_link = False
-        if user["include_domain"]:
-            include = user["include_domain"]
-            domains = [domain.strip() for domain in include]
-            if any(i in link for i in domains):
-                should_replace_link = True
-        elif user["exclude_domain"]:
-            exclude = user["exclude_domain"]
-            domains = [domain.strip() for domain in exclude]
-            if all(i not in link for i in domains):
-                should_replace_link = True
-        else:
-            should_replace_link = True
-
-        if should_replace_link:
-            short_link = await shortzy.convert(link, alias)
-            text = text.replace(long_url, short_link)
-
-    return text
 
 
 async def replace_username(text, username):
