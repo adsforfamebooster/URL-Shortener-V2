@@ -55,7 +55,7 @@ async def main_convertor_handler(message: Message, edit_caption: bool = False, u
     caption = await bypass_handler(caption)
     
     METHODS = {
-          "shortener": replace_link,
+          "shortener": replace_link
 }
 
     # Replacing the username with your username.
@@ -84,7 +84,7 @@ async def main_convertor_handler(message: Message, edit_caption: bool = False, u
                 fileid = InputMediaPhoto(banner_image, caption=shortenedText)
 
     if message.text:
-        if user_method == "shortener":
+        if user_method in ["shortener", "mdlink"] and "|" in caption:
             regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))\s\|\s([a-zA-Z0-9_]){,30}"
             if custom_alias := re.match(regex, caption):
                 custom_alias = custom_alias[0].split("|")
@@ -160,7 +160,7 @@ async def create_inline_keyboard_markup(message: Message, method_func, user):
 
 async def replace_link(user, text, alias=""):
     api_key = user["shortener_api"]
-    base_site = BASE_SITE
+    base_site = user["base_site"]
     shortzy = Shortzy(api_key, base_site)
     links = await extract_link(text)
 
