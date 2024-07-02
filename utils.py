@@ -55,7 +55,7 @@ async def main_convertor_handler(message: Message, edit_caption: bool = False, u
     caption = await bypass_handler(caption)
     
     METHODS = {
-          "shortener": replace_link
+          "shortener": replace_link,
 }
 
     # Replacing the username with your username.
@@ -84,7 +84,7 @@ async def main_convertor_handler(message: Message, edit_caption: bool = False, u
                 fileid = InputMediaPhoto(banner_image, caption=shortenedText)
 
     if message.text:
-        if user_method in ["shortener", "mdlink"] and "|" in caption:
+        if user_method == "shortener":
             regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))\s\|\s([a-zA-Z0-9_]){,30}"
             if custom_alias := re.match(regex, caption):
                 custom_alias = custom_alias[0].split("|")
