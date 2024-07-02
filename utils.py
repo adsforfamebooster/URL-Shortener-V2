@@ -23,10 +23,6 @@ from plugins import web_server
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
-METHODS = {
-          "shortener": replace_link
-}
-
 
 # Default user method
 user_method = "shortener"  # Set 'shortener' as the default method
@@ -63,7 +59,9 @@ async def replace_link(user, text, alias=""):
 
     return text
 
-
+METHODS = {
+          "shortener": replace_link
+}
 
 async def main_convertor_handler(message: Message, edit_caption: bool = False, user=None):
     if user:
