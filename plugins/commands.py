@@ -31,7 +31,7 @@ user_commands = [
     "me",
 ]
 avl_web = [
-    "inshorturl.com",
+    "brieflyurl.com",
 ]
 
 avl_web1 = "".join(f"- {i}\n" for i in avl_web)
