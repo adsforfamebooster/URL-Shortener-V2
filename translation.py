@@ -13,7 +13,7 @@ I'll handle the rest and get those links shortened or converted in a short time!
 
 START_MESSAGE = """Hi there {} 👋😃
 
-Welcome to [InShortUrl Bot](t.me/inShortUrlBot) - Your Personal URL Shortener Bot. 🌐
+Welcome to [BrieflyUrl Bot](t.me/BrieflyUrl_Help) - Your Personal URL Shortener Bot. 🌐
 
 Just send me a link, and I'll work my magic to shorten it for you. Plus, I'll keep track of your earnings! 💰💼
 
@@ -21,7 +21,7 @@ Just send me a link, and I'll work my magic to shorten it for you. Plus, I'll ke
 /me - Your profile setting
 /help - Advanced setting
 
-New User ? Then just sign up on inShortUrl.com and Get Highest Upto 9$ CPM rate & 10% Refer Earning Lifetime.
+New User ? Then just sign up on BrieflyUrl.com and Get Highest Upto 8$ CPM rate & 10% Refer Earning Lifetime.
 """
 
 HELP_MESSAGE = """Hey there! My name is {firstname} and I'm a link convertor and shortener bot here to make your work easier and help you earn more 💰.
@@ -41,7 +41,7 @@ Useful commands:
 •  /shortener_api - Setup or Change API 
 •  /me - Your profile Settings 
 
-Contact Help Support - @inShortUrl_Help
+Contact Help Support - @BrieflyUrl_Help
 """
 
 ABOUT_TEXT = """
@@ -49,8 +49,8 @@ ABOUT_TEXT = """
 
 `🤖 Name:` ** {} ** 
 `📝 Language:` [Python 3](https://www.python.org/)
-`👨‍💻 Developer:` [Dev](t.me/inShortUrl)
-`📢 Support:` [Support Talk](https://t.me/inShortUrl_Help)
+`👨‍💻 Developer:` [Dev](t.me/BrieflyUrl)
+`📢 Support:` [Support Talk](https://t.me/BrieflyUrl_Help)
 """
 
 
@@ -113,8 +113,8 @@ BACK_REPLY_MARKUP = InlineKeyboardMarkup(
 USER_ABOUT_MESSAGE = """
 <b>Current Setting Of Your Bot is Here:</b>
 
-•  🌐 Shortener website: inShortUrl.com
-•  🔌 inShortUrl API: {shortener_api}
+•  🌐 Shortener website: BrieflyUrl.com
+•  🔌 BrieflyUrl API: {shortener_api}
 •  📎 Username: @{username}
 •  📝 Header text:
 {header_text}
