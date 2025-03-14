@@ -125,10 +125,10 @@ USER_ABOUT_MESSAGE = """
 
 SHORTENER_API_MESSAGE = """<b>How To Connect API ?</b>
 
-• First Visit inShortUrl.com/member/tools/api
+• First Visit BrieflyUrl.com/member/tools/api
 • Copy the API Token & Comeback to the Bot.
 • Put /shortener_api [api] Replace With Your API
-• Done! Now Bot is Succesfully Connected With Your inShortUrl Account
+• Done! Now Bot is Succesfully Connected With Your BrieflyUrl Account
 
 To add or update your Shortner Website API, 
 `/shortener_api [api]`
